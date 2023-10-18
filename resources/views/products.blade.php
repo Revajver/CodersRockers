@@ -1,5 +1,4 @@
 <x-layout>
-
     <a class="btn btn-success" href="/product/create">Add Product</a>
     <div class="p-3 shadow mt-2">
         <table class="table shadow">
@@ -18,15 +17,14 @@
             </thead>
             <tbody>
                 @foreach ($tshirts as $tshirt)
-                {{ dd($tshirt) }}
                     <tr>
                         <td>{{ $tshirt->product_name }}</td>
                         <td>{{ $tshirt->product_desc }}</td>
                         <td>{{ $tshirt->product_price }}</td>
                         <td>{{ $tshirt->product_amount }}</td>
                         <td>{{ $tshirt->category->category_name }}</td>
-                        <td>{{ $tshirt->tshirt_color }}</td>
-                        <td>{{ $tshirt->tshirt_size }}</td>
+                        <td>{{ $tshirt->tshirt->tshirt_color }}</td>
+                        <td>{{ $tshirt->tshirt->tshirt_size }}</td>
                         <td>
                             <div class="d-flex">
                                 <a class="btn btn-warning" href="/product/{{ $tshirt->product_id }}/edit">EDIT</a>

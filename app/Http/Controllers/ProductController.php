@@ -12,27 +12,16 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
-        // $cds = Product::join('cds', 'cds.product_id', '=', 'products.product_id')
-        //     ->join('categories', 'categories.category_id', '=', 'products.category_id')
-        //     ->where('products.category_id', '2')
-        //     ->select('products.*', 'cds.cd_title', 'categories.category_name')
-        //     ->get();
-
-        // $cdss = Product::with('tshirt')->with('cd')->with('category')->get();
-        // dd($cdss);
-
-
-        // $tshirts = Product::join('tshirts', 'tshirts.product_id', '=', 'products.product_id')
-        //     ->join('categories', 'categories.category_id', '=', 'products.category_id')
-        //     ->where('products.category_id', '1')
-        //     ->select('products.*', 'tshirts.tshirt_color', 'tshirts.tshirt_size', 'categories.category_name')
-        //     ->get();
-
         $tshirts = Product::with('tshirt', 'category')->where('category_id', '1')->get();
         
         $cds = Product::with('cd', 'category')->where('category_id', '2')->get();
+
+        // $products = Product::with('cd', 'tshirt', 'category')->get();
+
+        // dd($products);
 
         return view('products', ['cds' => $cds, 'tshirts' => $tshirts]);
     }
